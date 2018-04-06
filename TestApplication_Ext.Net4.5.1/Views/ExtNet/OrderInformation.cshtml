@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "OrderInformation";
+}
+@model System.Collections.IEnumerable
+@Html.X().ResourceManager().ScriptMode(Ext.Net.ScriptMode.Debug)
+<h2>OrderInformation</h2>
+
+@Html.Partial("ToolBarPartialView")
+
+@(Html.X().GridPanel()
+                        .ID("GridPanel1")
+                        .Title("Array Grid")
+                        .Width(780)
+                        .Height(350).AutoRender(true)
+                        .Stateful(true)
+                        .Store(Html.X().Store()
+                            .ID("Store1")
+                            .Model(Html.X().Model()
+                                .Fields(
+                                    new ModelField("company"),
+                                    new ModelField("price", ModelFieldType.Float),
+                                    new ModelField("change", ModelFieldType.Float),
+                                    new ModelField("pctChange", ModelFieldType.Float),
+                                    new ModelField("lastChange", ModelFieldType.Date, "M/d hh:mmtt")
+                                )
+                            )
+                            .DataSource(Model)
+                        )
+                        .ColumnModel(
+                            Html.X().Column().ID("CompanyColumn").Text("Company").DataIndex("company"),
+                            Html.X().Column().ID("PriceColumn").Text("Price").DataIndex("price").Renderer(RendererFormat.UsMoney),
+                                Html.X().Column().ID("ChangeColumn").Text("Change").DataIndex("change")
+                        ))
+
+@Html.Partial("ToolBarPartialView")

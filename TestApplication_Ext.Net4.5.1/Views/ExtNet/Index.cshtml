@@ -1,0 +1,88 @@
+@using Ext.Net;
+
+@using Ext.Net.MVC;
+
+@*@model TestApplication.Models.ExtNetModel*@
+
+@{
+
+    Layout = null;
+
+}
+
+@*https://forums.ext.net/showthread.php?26023-CLOSED-Ext-grid-Panel-column-model-replacement*@
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Ext.NET MVC Sample</title>
+
+    <link type="text/css" rel="stylesheet" href="http://speed.ext.net/www/intro/css/main.css" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Scripts/MicrosoftAjax.js"></script>
+
+</head>
+
+<body>
+
+    @Html.X().ResourceManager().ScriptMode(Ext.Net.ScriptMode.Debug)
+
+    @using (Html.BeginForm())
+
+    {
+
+        @Html.X().Viewport().Layout("fit").ID("viewPortIndex").Anchor("100% 100%").Items(viewportitems =>
+             {
+                 viewportitems.Add(
+                     Html.X().TabPanel().ID("tpJobMain").Region(Ext.Net.Region.Center).MarginSpec("0 0 0 0")
+
+                            .Items(tabpanelitems =>
+
+                            {
+
+                                tabpanelitems.Add(
+
+                                  Html.GeneratePanel
+
+                                  (
+
+                                  "Job Information", "ExtNet/JobInformation",
+
+                                  "Loading Job Information...")
+
+                                  );
+
+                                tabpanelitems.Add(
+
+                                  Html.GeneratePanel
+
+                                  (
+
+                                  "Order Information", "ExtNet/OrderInformation",
+
+                                  "Loading Info Information...")
+
+                                  );
+
+
+
+                            })
+
+                 );
+
+             });
+
+    }
+
+</body>
+
+</html>

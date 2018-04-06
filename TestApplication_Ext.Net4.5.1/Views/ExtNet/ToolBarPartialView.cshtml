@@ -1,0 +1,26 @@
+﻿@Html.X().Toolbar().Items(toolbaritems =>
+                  {
+                      toolbaritems.Add(Html.X().ToolbarFill());
+                      toolbaritems.Add(Html.X().Button().Text("Add additional recipient").Icon(Ext.Net.Icon.ApplicationAdd));
+                      toolbaritems.Add(@Html.X().Button(new Button.Config
+                      {
+                          Text = "Close",
+                          Icon = Icon.Cancel,
+                          Handler = "closeJobNewWindow();"
+                      }));
+
+                      toolbaritems.Add(@Html.X().Button(new Button.Config
+                      {
+                          Text = "Create Duplicate Job",
+                          Icon = Icon.PageCopy,
+                          Handler = "CreateDuplicateJob();"
+                      }));
+
+                      toolbaritems.Add(@Html.X().Button(new Button.Config
+                      {
+                          Text = "Edit Job Info",
+                          Icon = Icon.ApplicationEdit,
+                          Handler = "editJobInfo();"
+                      }));
+                  })
+
